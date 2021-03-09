@@ -3,9 +3,10 @@ import vk
 import string
 import emoji
 import configparser
-from vkparser.postgres import Postgres
 import matplotlib.pyplot as plt
 import pandas as pd
+
+from postgres import Postgres
 
 
 def get_posts(count=1, page='itis_kfu'):
@@ -47,7 +48,9 @@ def count_words() -> dict:
     text = psql.get_posts_text()
 
     for item in text:
-        for word in item.spit():
+        item = clear_text(item[0])
+
+        for word in item.split():
             words_dict[word] = words_dict.get(word, 0) + 1
 
     psql.close()
@@ -73,11 +76,10 @@ def show_visualisation(word_dict: dict):
     ax.set_xlabel("Words", fontsize=12)
     ax.set_ylabel("Count", fontsize=12)
     plt.savefig('words_distr.png', dpi=1000)
-    plt.show()
 
 
 def main():
-    posts = get_posts(count=200)
+    posts = get_posts(count=1)
     save_posts(posts)
     words_dict = count_words()
     save_n_words(words_dict)
