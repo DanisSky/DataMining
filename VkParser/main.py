@@ -79,7 +79,7 @@ def show_visualisation(word_dict: dict):
 
 
 def main():
-    posts = get_posts(count=1)
+    posts = get_posts(count=200)
     save_posts(posts)
     words_dict = count_words()
     save_n_words(words_dict)
