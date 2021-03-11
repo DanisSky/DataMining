@@ -10,9 +10,9 @@ from postgres import Postgres
 
 
 def get_posts(count=1, page='itis_kfu'):
-    posts = ''
+    posts = {}
     for i in range(count // 100 + 1):
-        posts += vkapi.wall.get(domain=page, offset=i * 100, count=count)
+        posts.update(vkapi.wall.get(domain=page, offset=i * 100, count=count))
         count -= 100
 
     return posts
