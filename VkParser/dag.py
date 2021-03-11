@@ -22,6 +22,6 @@ dag = DAG(
 
 BashOperator(
     task_id='main_task',
-    bash_command='python3 main.py',
+    bash_command='python3 /opt/DataMining/VkParser/main.py',
     dag=dag
 )
