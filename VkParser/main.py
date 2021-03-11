@@ -9,12 +9,9 @@ import pandas as pd
 from postgres import Postgres
 
 
-def get_posts(count=1, page='itis_kfu'):
-    posts = {}
-    for i in range(count // 100):
-        posts.update(vkapi.wall.get(domain=page, offset=i * 100, count=count))
-        count -= 100
-        print(count, i)
+def get_posts(count=1, offset=0, page='itis_kfu'):
+    posts = vkapi.wall.get(domain=page, offset=offset, count=count)
+
     return posts
 
 
@@ -81,9 +78,15 @@ def show_visualisation(word_dict: dict):
     plt.savefig('words_distr.png', dpi=1000)
 
 
+def post_manager(count):
+    for i in range(count // 100):
+        posts = get_posts(count=count, offset=i * 100)
+        count -= 100
+        save_posts(posts)
+
+
 def main():
-    posts = get_posts(count=200)
-    save_posts(posts)
+    post_manager(200)
     words_dict = count_words()
     save_n_words(words_dict)
     show_visualisation(word_dict=words_dict)
