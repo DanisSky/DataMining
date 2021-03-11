@@ -14,7 +14,7 @@ def get_posts(count=1, page='itis_kfu'):
     for i in range(count // 100):
         posts.update(vkapi.wall.get(domain=page, offset=i * 100, count=count))
         count -= 100
-
+        print(count, i)
     return posts
 
 
