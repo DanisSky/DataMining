@@ -92,4 +92,8 @@ if __name__ == '__main__':
 
     session = vk.Session(access_token=config.get('vk', 'token'))
     vkapi = vk.API(session=session, v='5.85')
+
+    psql = Postgres()
+    psql.truncate_table('word')
+
     main()
