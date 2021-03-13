@@ -1,5 +1,6 @@
 import datetime as dt
 
+import airflow
 from airflow.example_dags.tutorial import default_args
 from airflow.models import DAG
 from airflow.operators.bash import BashOperator
@@ -10,7 +11,7 @@ args = {
     'retries': 1,
     'retry_delay': dt.timedelta(minutes=2),
     'depends_on_past': False,
-    'start_date': dt.datetime(2021, 3, 13)
+    'start_date': airflow.utils.dates.days_ago(2),
 }
 dag = DAG(
     'collect_dag',
@@ -24,5 +25,5 @@ dag = DAG(
 BashOperator(
     task_id='main_task',
     bash_command='python3 /opt/DataMining/VkParser/main.py',
-    dag=dag
+    dag=dag,
 )
