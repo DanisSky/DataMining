@@ -8,7 +8,7 @@ from airflow.utils.dates import days_ago
 args = {
     'owner': 'airflow',
     'retries': 1,
-    'retry_delay': dt.timedelta(minutes=3),
+    'retry_delay': dt.timedelta(minutes=2),
     'depends_on_past': False,
     'start_date': dt.datetime(2021, 3, 13)
 }
