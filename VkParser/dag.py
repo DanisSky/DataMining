@@ -20,10 +20,11 @@ dag = DAG(
     schedule_interval=None,
     start_date=days_ago(3),
     tags=['vkParser'],
+    template_searchpath="/opt/DataMining/VkParser",
 )
 
 BashOperator(
     task_id='main_task',
-    bash_command='python3 /opt/DataMining/VkParser/main.py',
+    bash_command='python3 main.py',
     dag=dag,
 )
