@@ -35,6 +35,7 @@ def clear_text(text):
     p_table = str.maketrans(dict.fromkeys(string.punctuation))
     d_table = str.maketrans(dict.fromkeys(b'1234567890'))
 
+    text = re.sub(r'^https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)  # delete urls
     text = re.sub(emoji.get_emoji_regexp(), r"", text)  # delete emojis
     text = text.translate(p_table)  # delete punctuation
     text = text.translate(d_table)  # delete digits

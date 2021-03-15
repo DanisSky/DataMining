@@ -18,7 +18,6 @@ dag = DAG(
     default_args=default_args,
     description='DAG',
     schedule_interval=None,
-    start_date=days_ago(3),
     tags=['vkParser'],
     template_searchpath="/opt/DataMining/VkParser",
 )
