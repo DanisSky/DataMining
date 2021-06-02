@@ -6,9 +6,9 @@ from services import get_page_links_v2
 if __name__ == '__main__':
     URL = "https://makingfun.com/"
 
-    d = get_page_links_v2(URL)
+    # d = get_page_links_v2(URL)
 
-    create_graph(d)
+    # create_graph(d)
 
     matrix, height, G_LIST = matrix_from_graph()
 
