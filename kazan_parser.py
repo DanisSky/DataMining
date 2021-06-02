@@ -31,7 +31,6 @@ def download_file(url):
 file_name = download_file(volga_federal_district_url)
 file_name
 
-!pip install xmltodict
 
 file = open('/content/drive/MyDrive/DataMiningPractice/kazan_map','r',encoding='utf-8').read()
 soup = BeautifulSoup(file,'xml')
